@@ -1,6 +1,6 @@
 export default function Buttons(props) {
     return (
-        <button style={styles.button}>{props.name}</button>
+        <button style={styles.button} onClick={props.onClick}>{props.name}</button>
     )
 }
 

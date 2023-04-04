@@ -1,6 +1,7 @@
 import star from "../interactive-rating-component-main/images/icon-star.svg"
 import Buttons from "../buttons";
 import {useState} from "react";
+import Result from "./Res";
 
 export default function Rating(props) {
     const title = "How did we do?";
@@ -10,9 +11,11 @@ export default function Rating(props) {
   
   
     function finish() {
+      if(props.rate != null ) 
        props.setVisible(false)
     }
-  
+
+   
     return (
       <div style={styles.mainDiv}>
         <div style={styles.starDiv}>
@@ -22,7 +25,7 @@ export default function Rating(props) {
         <p style={styles.mainP}>{quote}</p>
         <div style={styles.buttonsDiv}>
             {numbArray.map((item) => {
-              return <Buttons name = {item}/>
+              return <Buttons key = {item} name = {item} onClick={() => {props.setRate(item)}}/>
             })}
         </div>
         <button style={styles.submitButton} onClick = {finish}>{submit}</button>
@@ -80,7 +83,5 @@ const styles = {
       lineHeight: "18px",
       letterSpacing: 1.87,
       textTransform: "uppercase"
-  
     }
-    
   }
